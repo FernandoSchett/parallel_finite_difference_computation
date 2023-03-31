@@ -1,0 +1,8 @@
+tmpdir=./input.bin
+nz=195
+nx=315
+dz=10
+dx=10
+nxb=50
+nzb=50
+order=8

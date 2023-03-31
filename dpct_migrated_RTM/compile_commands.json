@@ -1,0 +1,7 @@
+[
+    {
+        "command": "nvcc -c -o rtm_code -I./lib/include -O3 --no-warnings --cuda-gpu-arch=sm_60 -D__CUDACC__=1 ./src/fd-code.cu",
+        "directory": "/home/u47864/complete-code",
+        "file": "/home/u47864/complete-code/src/fd-code.cu"
+    }
+]
