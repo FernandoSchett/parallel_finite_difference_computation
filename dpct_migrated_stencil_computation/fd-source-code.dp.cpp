@@ -380,7 +380,7 @@ int main (int argc, char **argv)
         memset(output_data, 0, mtxBufferLength);
         q_ct1.memcpy(output_data, d_laplace, mtxBufferLength).wait();
 	printf("> Copy memory Time    = %.2f (ms)\n",execTimeMem);
-	printf("> Exec time    = %.2f (ms)\n", execTimeMem+execTime+execTimeMem2);
+	//printf("> Exec time    = %.2f (ms)\n", execTimeMem+execTime+execTimeMem2);
         // Writing output
         FILE *foutput;
         if((foutput = fopen("output_teste.bin", "wb")) == NULL)

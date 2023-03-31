@@ -1,7 +1,7 @@
 C_SRCS = ./fd-source-code.dp.cpp
 
 
-CFLAGS = -O3 -w -arch=sm_60
+CFLAGS = -O3 -w -march=native
 LIBS = -lm 
 
 all:stencil_code
