@@ -1,5 +1,6 @@
 #include <cuda.h>
 #include <stdio.h>
+#include <sys/time.h>
 extern "C"{
 	#include "functions.h"
 }
@@ -378,6 +379,7 @@ void init_args()
 
 int main (int argc, char **argv)
 {
+	struct timeval start,end;
 	FILE *fsource = NULL, *fvel_ext = NULL, *fd_obs = NULL, *fvp = NULL, *fsns = NULL,*fsns2 = NULL, *fsnr = NULL, *fimg = NULL, *flim = NULL, *fimg_lap = NULL;
 
 	int iz, ix, it, is;
@@ -388,6 +390,7 @@ int main (int argc, char **argv)
 	float **PP,**P,**PPR,**PR,**tmp;
 	float ***swf, ***snaps, **vel2, ***d_obs, ***vel_ext_rnd;
 	float **imloc, **img, **img_lap;
+	gettimeofday(&start, NULL);
 	read_input(argv[1]);
 	init_args();
 	
@@ -529,6 +532,11 @@ int main (int argc, char **argv)
 	// 		fprintf(foutput, " %f \n", img[ix][iz]);
 	// 	}
 	// }
+	gettimeofday(&end, NULL);
+	float execTime = ((end.tv_sec - start.tv_sec)*1000000 + (end.tv_usec - start.tv_usec))/1000000;
+    
+	printf("> Exec time = %.2f (s)\n", execTime);
+
 	fwrite(*img,sizeof(float),nz*nx,fimg);
 
 	fwrite(*img_lap,sizeof(float),nz*nx,fimg_lap);
